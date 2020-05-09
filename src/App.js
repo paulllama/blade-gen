@@ -2,15 +2,15 @@ import React from 'react';
 import _ from 'lodash'
 import './App.css';
 
-
+import Building from './Building'
 import Person from './Person'
 
 function App() {
   const [creations, setCreations] = React.useState([])
 
-  const addPerson = () => {
+  const addCreation = CreationType => {
     setCreations([
-      <Person key={creations.length} />,
+      <CreationType key={creations.length} />,
       ...creations,
     ])
   }
@@ -18,7 +18,8 @@ function App() {
   return (
     <>
       <div>
-        <div onClick={addPerson}>Add Person</div>
+        <div onClick={() => addCreation(Person)}>Add Person</div>
+        <div onClick={() => addCreation(Building)}>Add Building</div>
       </div>
       <div className="creation-list">
         {creations}
