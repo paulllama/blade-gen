@@ -2,22 +2,16 @@ import React from 'react';
 import styled from 'styled-components'
 
 import Colors from './styles/colors'
-import Fonts from './styles/fonts'
 import { FaRoad, FaUserFriends, FaBuilding } from 'react-icons/fa'
 
-import Building from './Building'
-import Person from './Person'
-import Street from './Street'
+import config from './config'
+import RandomCreation from './RandomCreation'
 
 const AppContainer = styled.div`
   background: ${Colors.BACKGROUND};
   width: 100vw;
   min-height: 100vh;
   color: ${Colors.TEXT}
-
-  * {
-    font-family: ${Fonts.BODY};
-  }
 `
 
 const SIDE_BAR_WIDTH = '8rem'
@@ -50,15 +44,17 @@ const SideBar = styled.div`
   flex-direction: column-reverse;
 `
 
-const Logo = styled.div`
+const Logo = styled.h1`
   background: ${Colors.LOGO};
   border-color: ${Colors.LOGO};
+  color: ${Colors.BACKGROUND};
   padding: 0.75rem 1rem;
-  font-family: ${Fonts.TITLE};
   font-size: 2rem;
   line-height: 1;
   position: relative;
+  margin: 0.5rem 0;
   height: 2.2rem;
+  color: black;
 `
 
 const CreateButton = styled.div`
@@ -86,9 +82,23 @@ const BladeGenList = styled.div`
 const App = () => {
   const [bladeGens, setBladeGens] = React.useState([])
 
-  const generate = Type => {
+  const generate = type => {
+    let lists = {}
+
+    if (type === 'Person') {
+      lists = config.Person
+    } else if (type === 'Building') {
+      lists = config.Building
+    } else if (type === 'Street') {
+      lists = config.Street
+    }
+
     setBladeGens([
-      <Type key={bladeGens.length} />,
+      <RandomCreation
+        key={bladeGens.length}
+        type={type}
+        lists={lists}
+      />,
       ...bladeGens,
     ])
   }
@@ -97,13 +107,13 @@ const App = () => {
     <AppContainer>
       <SideBar>
         <JaggedDiv color={Colors.NAV}>
-          <CreateButton onClick={() => generate(Person)}>
+          <CreateButton onClick={() => generate('Person')}>
             <FaUserFriends />
           </CreateButton>
-          <CreateButton onClick={() => generate(Building)}>
+          <CreateButton onClick={() => generate('Building')}>
             <FaBuilding  />
           </CreateButton>
-          <CreateButton onClick={() => generate(Street)}>
+          <CreateButton onClick={() => generate('Street')}>
             <FaRoad />
           </CreateButton>
         </JaggedDiv>
