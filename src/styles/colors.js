@@ -1,0 +1,5 @@
+module.exports.BACKGROUND = '#222'
+module.exports.NAV = '#777'
+module.exports.LOGO = '#e43f5a'
+module.exports.ACTION = '#e43f5a'
+module.exports.TEXT = '#fefefe'
