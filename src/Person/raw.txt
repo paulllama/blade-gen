@@ -1,0 +1,155 @@
+LOOKS
+
+Large
+Lovely
+Weathered
+Chiseled
+Handsome
+Athletic
+Slim
+Dark
+Fair
+Stout
+Delicate
+Scarred
+Bony
+Worn
+Rough
+Plump
+Wiry
+Striking
+Short
+Tall
+Sexy
+Wild
+Elegant
+Stooped
+Cute
+Plain
+Old
+Young
+Stylish
+Strange
+Disfigured, Maimed
+Glasses, Monocle
+Prosthetic, Crippled
+Long Hair / Beard / Wig
+Shorn, Bald
+Tattooed
+
+GOALS
+
+Wealth
+Power
+Authority
+Prestige, Fame
+Control
+Knowledge
+Pleasure
+Revenge
+Freedom
+Achievement
+Happiness
+Infamy, Fear
+Respect
+Love
+Change
+Chaos, Destruction
+Justice
+Cooperation
+
+METHODS
+Violence
+Threats
+Negotiation
+Study
+Manipulation
+Strategy
+Theft
+Arcane
+Commerce
+Hard Work
+Law, Politics
+Sabotage
+Subterfuge
+Alchemy
+Blackmail
+Teamwork
+Espionage
+Chaos
+
+PROFESSION
+Baker
+Barber
+Blacksmith
+Brewer
+Butcher
+Carpenter
+Cartwright
+Chandler
+Clerk
+Cobbler
+Cooper
+Cultivator
+Driver
+Dyer
+Embroiderer
+Fishmonger
+Gondolier
+Guard
+Leatherworker
+Mason
+Merchant
+Roofer
+Ropemaker
+Rug Maker
+Servant
+Shipwright
+Criminal
+Tailor
+Tanner
+Tinkerer
+Vendor
+Weaver
+Woodworker
+Goat Herd
+Messenger
+Sailor
+
+PROFESSION_RARE
+Advocate
+Architect
+Artist
+Author
+Bailiff
+Apiarist
+Banker
+Bounty Hunter
+Clockmaker
+Courtesan
+Furrier
+Glass Blower
+Diplomat
+Jailer
+Jeweler
+Leech
+Locksmith
+Magistrate
+Musician
+Physicker
+Plumber
+Printer
+Scholar
+Scribe
+Sparkwright
+Tax Collector
+Treasurer
+Whisper
+Composer
+Steward
+Captain
+Spirit Warden
+Journalist
+Explorer
+Rail Jack
+Soldier
