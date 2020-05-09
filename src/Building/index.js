@@ -9,7 +9,7 @@ import {
 	INTERIOR_DETAILS,
 } from './constants'
 
-const Person = () => {
+const Building = () => {
 	const [isExpanded, setIsExpanded] = React.useState(true)
 
 	const [material, setMaterial] = React.useState()
@@ -50,4 +50,4 @@ const Person = () => {
 	)
 }
 
-export default Person
+export default Building
