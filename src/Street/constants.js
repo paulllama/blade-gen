@@ -100,12 +100,12 @@ const TYPES_RARE = [
 
 module.exports.TYPES = [
 	// Match the distribution of use types (pg. 300)
-	...USES_COMMON,
-	...USES_COMMON,
-	...USES_COMMON,
-	...USES_UNCOMMON,
-	...USES_UNCOMMON,
-	...USES_RARE,
+	...TYPES_COMMON,
+	...TYPES_COMMON,
+	...TYPES_COMMON,
+	...TYPES_UNCOMMON,
+	...TYPES_UNCOMMON,
+	...TYPES_RARE,
 ]
 
 module.exports.DETAILS = [
