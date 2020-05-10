@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components'
 
 import Colors from '../shared/colors'
 import {
@@ -11,51 +10,15 @@ import {
 import config from '../config'
 import RandomCreation from './RandomCreation'
 import DaggerDiv from '../shared/DaggerDiv'
-import ActionDiv from '../shared/ActionDiv'
 
-const AppContainer = styled.div`
-  background: ${Colors.BACKGROUND};
-  width: 100vw;
-  min-height: 100vh;
-  color: ${Colors.TEXT}
-`
+import {
+  AppContainer,
+  SideBar,
+  Logo,
+  CreateButton,
+  BladeGenList,
+} from './styled'
 
-const SIDE_BAR_WIDTH = '8rem'
-
-const SideBar = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: ${Colors.NAV};
-  display: flex;
-  flex-direction: column;
-`
-
-const Logo = styled.h1`
-  background: ${Colors.LOGO};
-  border-color: ${Colors.LOGO};
-  color: ${Colors.BACKGROUND};
-  padding: 0.75rem 1rem;
-  font-size: 2rem;
-  line-height: 1;
-  position: relative;
-  margin: 0.5rem 0;
-  height: 2.2rem;
-  color: black;
-`
-
-const CreateButton = styled(ActionDiv)`
-  padding: 1.25rem 2rem;
-  font-size: 3.5rem;
-  line-height: 0.75;
-  text-align: center;
-`
-
-const BladeGenList = styled.div`
-  color: ${Colors.TEXT};
-  padding-left: ${SIDE_BAR_WIDTH};
-  margin-left: 1.5em;
-`
 const BladeGen = () => {
   const [bladeGens, setBladeGens] = React.useState([])
 
