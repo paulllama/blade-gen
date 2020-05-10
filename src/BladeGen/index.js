@@ -19,8 +19,16 @@ import {
   BladeGenList,
 } from './styled'
 
+function bladeGenListReducer(state, { key, elem }) {
+  return {
+    ...state,
+    [key]: elem,
+  }
+}
+
 const BladeGen = () => {
-  const [bladeGens, setBladeGens] = React.useState([])
+  const [bladeGens, setBladeGens] = React.useReducer(bladeGenListReducer, {})
+  const [count, setCount] = React.useState(0)
 
   const generate = type => {
     let lists = {}
@@ -35,16 +43,32 @@ const BladeGen = () => {
       return
     }
 
-    setBladeGens([
-      <RandomCreation
-        key={bladeGens.length}
-        type={type}
-        lists={lists}
-      />,
-      ...bladeGens,
-    ])
+    const key = `${type}${count}`
+
+    setBladeGens({
+      key,
+      elem: (
+        <RandomCreation
+          key={key}
+          type={type}
+          lists={lists}
+          remove={() => { remove(key) }}
+        />
+      ),
+    })
+    setCount(count + 1)
   }
 
+  const remove = key => {
+    setBladeGens({
+      key,
+      elem: null,
+    })
+  }
+
+  console.log(bladeGens)
+
+  // TODO This is just test code
   React.useEffect(() => {
     generate('Person')
   }, [])
@@ -77,7 +101,7 @@ const BladeGen = () => {
         </DaggerDiv>
       </SideBar>
       <BladeGenList>
-        {bladeGens}
+        {Object.values(bladeGens)}
       </BladeGenList>
     </AppContainer>
   )

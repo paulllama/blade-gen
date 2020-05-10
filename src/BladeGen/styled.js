@@ -42,4 +42,6 @@ export const CreateButton = styled(ActionDiv)`
 export const BladeGenList = styled.div`
   color: ${Colors.TEXT};
   margin-left: 1.5em;
+	display: flex;
+	flex-direction: column-reverse;
 `

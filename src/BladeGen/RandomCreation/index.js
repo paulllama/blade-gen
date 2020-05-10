@@ -4,6 +4,7 @@ import _ from 'lodash'
 import {
 	RiLockLine as LockedIcon,
 	RiLockUnlockLine as UnlockedIcon,
+	RiDeleteBinLine as TrashIcon,
 } from 'react-icons/ri'
 import { BsShuffle as ShuffleIcon } from 'react-icons/bs'
 
@@ -21,7 +22,7 @@ import {
 	AttributeValue,
 } from './styled'
 
-const RandomCreation = ({ type, lists }) => {
+const RandomCreation = ({ type, lists, remove }) => {
 	const [isLocked, setIsLocked] = React.useState(false)
 	const [creation, setCreation] = React.useState({})
 
@@ -46,12 +47,12 @@ const RandomCreation = ({ type, lists }) => {
 				...newChoices,
 			})
 		}
-	}, [lists, creation])
+	}, [lists, creation, isLocked])
 
 	const ICON_SIZE = '1.35rem'
 
 	const attributes = _.map(creation, (value, key) => (
-		<Attribute>
+		<Attribute key={key}>
 			<AttributeLabel>{key}</AttributeLabel>
 			<AttributeValue>{value}</AttributeValue>
 		</Attribute>
@@ -78,6 +79,9 @@ const RandomCreation = ({ type, lists }) => {
 					</CreationAction>
 					<CreationAction onClick={() => setCreation({})}>
 						<ShuffleIcon size={ICON_SIZE} />
+					</CreationAction>
+					<CreationAction onClick={() => remove()}>
+						<TrashIcon size={ICON_SIZE} />
 					</CreationAction>
 				</DaggerDiv>
 			</CreationHeader>
