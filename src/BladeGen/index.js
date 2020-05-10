@@ -66,8 +66,6 @@ const BladeGen = () => {
     })
   }
 
-  console.log(bladeGens)
-
   // TODO This is just test code
   React.useEffect(() => {
     generate('Person')
