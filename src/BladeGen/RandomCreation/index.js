@@ -77,10 +77,10 @@ const RandomCreation = ({ type, lists, remove }) => {
 					<CreationAction onClick={() => setIsLocked(!isLocked)}>
 						{isLocked ? <LockedIcon size={ICON_SIZE} /> : <UnlockedIcon size={ICON_SIZE} />}
 					</CreationAction>
-					<CreationAction onClick={() => setCreation({})}>
+					<CreationAction disabled={isLocked} onClick={() => setCreation({})}>
 						<ShuffleIcon size={ICON_SIZE} />
 					</CreationAction>
-					<CreationAction onClick={() => remove()}>
+					<CreationAction disabled={isLocked} onClick={() => remove()}>
 						<TrashIcon size={ICON_SIZE} />
 					</CreationAction>
 				</DaggerDiv>
