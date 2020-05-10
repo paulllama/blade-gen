@@ -1,11 +1,17 @@
 import React from 'react';
 import styled from 'styled-components'
 
-import Colors from './styles/colors'
-import { FaRoad, FaUserFriends, FaBuilding } from 'react-icons/fa'
+import Colors from '../shared/colors'
+import {
+  RiRouteLine as StreetIcon,
+  RiUser2Line as PersonIcon,
+  RiBuildingLine as BuildingIcon,
+} from 'react-icons/ri'
 
-import config from './config'
+import config from '../config'
 import RandomCreation from './RandomCreation'
+import DaggerDiv from '../shared/DaggerDiv'
+import ActionDiv from '../shared/ActionDiv'
 
 const AppContainer = styled.div`
   background: ${Colors.BACKGROUND};
@@ -16,26 +22,7 @@ const AppContainer = styled.div`
 
 const SIDE_BAR_WIDTH = '8rem'
 
-const JaggedDiv = styled.div`
-  background: ${({ color }) => color};
-  border-color: ${({ color }) => color};
-  position: relative;
-  z-index: 1;
-
-  &:before {
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: -1;
-    border-style: solid;
-    border-width: 2rem 4rem;
-    border-color: ${({ color }) => color} transparent transparent ${({ color }) => color};
-  }
-`
-
 const SideBar = styled.div`
-  width: ${SIDE_BAR_WIDTH};
   position: fixed;
   top: 0;
   left: 0;
@@ -57,19 +44,14 @@ const Logo = styled.h1`
   color: black;
 `
 
-const CreateButton = styled.div`
+const CreateButton = styled(ActionDiv)`
   padding: 1.25rem 2rem;
-  cursor: pointer;
   font-size: 3.5rem;
   line-height: 0.75;
   text-align: center;
 
   &:first-of-type {
     padding-top: 4rem;
-  }
-
-  &:hover {
-    color: ${Colors.ACTION}
   }
 `
 
@@ -78,8 +60,7 @@ const BladeGenList = styled.div`
   padding-left: ${SIDE_BAR_WIDTH};
   margin-left: 1.5em;
 `
-
-const App = () => {
+const BladeGen = () => {
   const [bladeGens, setBladeGens] = React.useState([])
 
   const generate = type => {
@@ -106,20 +87,28 @@ const App = () => {
   return (
     <AppContainer>
       <SideBar>
-        <JaggedDiv color={Colors.NAV}>
+        <DaggerDiv
+          color={Colors.NAV}
+          direction="vertical"
+          sizeInRem={8}
+        >
           <CreateButton onClick={() => generate('Person')}>
-            <FaUserFriends />
+            <PersonIcon />
           </CreateButton>
           <CreateButton onClick={() => generate('Building')}>
-            <FaBuilding  />
+            <BuildingIcon  />
           </CreateButton>
           <CreateButton onClick={() => generate('Street')}>
-            <FaRoad />
+            <StreetIcon />
           </CreateButton>
-        </JaggedDiv>
-        <JaggedDiv color={Colors.LOGO}>
+        </DaggerDiv>
+        <DaggerDiv
+          color={Colors.LOGO}
+          direction="vertical"
+          sizeInRem={8}
+        >
           <Logo>Blade Gen</Logo>
-        </JaggedDiv>
+        </DaggerDiv>
       </SideBar>
       <BladeGenList>
         {bladeGens}
@@ -128,4 +117,4 @@ const App = () => {
   )
 }
 
-export default App
+export default BladeGen

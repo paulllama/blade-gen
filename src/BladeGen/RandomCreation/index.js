@@ -1,10 +1,17 @@
 import React from 'react'
 import _ from 'lodash'
 
-const RandomCreation = ({ type, lists }) => {
-	const [isExpanded, setIsExpanded] = React.useState(true)
-	const [creation, setCreation] = React.useState({})
+import DaggerDiv from '../../shared/DaggerDiv'
+import Colors from '../../shared/colors'
 
+import {
+	CreationContainer,
+	CreationHeader,
+	CreationType,
+} from './styled'
+
+const RandomCreation = ({ type, lists }) => {
+	const [creation, setCreation] = React.useState({})
 
 	React.useEffect(() => {
 		const newChoices = {}
@@ -35,10 +42,18 @@ const RandomCreation = ({ type, lists }) => {
 	))
 
 	return (
-		<div>
-			<div>{type}</div>
-			{isExpanded && details}
-		</div>
+		<CreationContainer>
+			<CreationHeader>
+				<DaggerDiv
+					color={Colors.NAV}
+					direction="horizontal"
+					sizeInRem={2.5}
+				>
+					<CreationType>{type}</CreationType>
+				</DaggerDiv>
+			</CreationHeader>
+			{details}
+		</CreationContainer>
 	)
 }
 
