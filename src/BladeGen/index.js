@@ -28,7 +28,7 @@ const SideBar = styled.div`
   left: 0;
   background: ${Colors.NAV};
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
 `
 
 const Logo = styled.h1`
@@ -49,10 +49,6 @@ const CreateButton = styled(ActionDiv)`
   font-size: 3.5rem;
   line-height: 0.75;
   text-align: center;
-
-  &:first-of-type {
-    padding-top: 4rem;
-  }
 `
 
 const BladeGenList = styled.div`
@@ -88,6 +84,14 @@ const BladeGen = () => {
     <AppContainer>
       <SideBar>
         <DaggerDiv
+          color={Colors.LOGO}
+          direction="vertical"
+          sizeInRem={8}
+          flatStart={true}
+        >
+          <Logo>Blade Gen</Logo>
+        </DaggerDiv>
+        <DaggerDiv
           color={Colors.NAV}
           direction="vertical"
           sizeInRem={8}
@@ -101,13 +105,6 @@ const BladeGen = () => {
           <CreateButton onClick={() => generate('Street')}>
             <StreetIcon />
           </CreateButton>
-        </DaggerDiv>
-        <DaggerDiv
-          color={Colors.LOGO}
-          direction="vertical"
-          sizeInRem={8}
-        >
-          <Logo>Blade Gen</Logo>
         </DaggerDiv>
       </SideBar>
       <BladeGenList>
