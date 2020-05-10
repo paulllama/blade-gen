@@ -3,8 +3,8 @@ import ActionDiv from '../shared/ActionDiv'
 import Colors from '../shared/colors'
 
 export const AppContainer = styled.div`
-  background: ${Colors.BACKGROUND};
-  width: 100vw;
+	width: 80vw;
+	max-width: 50rem;
   min-height: 100vh;
   padding: 1.5rem 1rem 2rem 8rem;
   color: ${Colors.TEXT}

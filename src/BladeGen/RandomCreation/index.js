@@ -15,6 +15,10 @@ import {
 	CreationHeader,
 	CreationType,
 	CreationAction,
+	AttributeList,
+	Attribute,
+	AttributeLabel,
+	AttributeValue,
 } from './styled'
 
 const RandomCreation = ({ type, lists }) => {
@@ -46,11 +50,11 @@ const RandomCreation = ({ type, lists }) => {
 
 	const ICON_SIZE = '1.35rem'
 
-	const details = _.map(creation, (value, key) => (
-		<div>
-			<div>{key}</div>
-			<div>{value}</div>
-		</div>
+	const attributes = _.map(creation, (value, key) => (
+		<Attribute>
+			<AttributeLabel>{key}</AttributeLabel>
+			<AttributeValue>{value}</AttributeValue>
+		</Attribute>
 	))
 
 	return (
@@ -77,7 +81,9 @@ const RandomCreation = ({ type, lists }) => {
 					</CreationAction>
 				</DaggerDiv>
 			</CreationHeader>
-			{details}
+			<AttributeList>
+				{attributes}
+			</AttributeList>
 		</CreationContainer>
 	)
 }

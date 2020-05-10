@@ -31,6 +31,8 @@ const BladeGen = () => {
       lists = config.Building
     } else if (type === 'Street') {
       lists = config.Street
+    } else {
+      return
     }
 
     setBladeGens([
@@ -42,6 +44,10 @@ const BladeGen = () => {
       ...bladeGens,
     ])
   }
+
+  React.useEffect(() => {
+    generate('Person')
+  }, [])
 
   return (
     <AppContainer>

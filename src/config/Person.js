@@ -14,10 +14,10 @@ export default {
 	],
 
 	'Gender': [
-		'male',
-		'female',
-		'non-binary',
-		'concealed',
+		'Male',
+		'Female',
+		'Non-binary',
+		'Concealed',
 	],
 
 	'Look': [
