@@ -5,6 +5,8 @@ import {
   RiRouteLine as StreetIcon,
   RiUser2Line as PersonIcon,
   RiBuildingLine as BuildingIcon,
+  RiUserSmileLine as AuthorIcon,
+  RiInformationLine as InfoIcon,
 } from 'react-icons/ri'
 
 import config from '../config'
@@ -17,6 +19,7 @@ import {
   Logo,
   CreateButton,
   BladeGenList,
+  MetaData,
 } from './styled'
 
 function bladeGenListReducer(state, { key, elem }) {
@@ -96,6 +99,26 @@ const BladeGen = () => {
           <CreateButton onClick={() => generate('Street')}>
             <StreetIcon />
           </CreateButton>
+        </DaggerDiv>
+        <DaggerDiv
+          color={Colors.NAV_ALT}
+          direction="vertical"
+          sizeInRem={8}
+        >
+          <MetaData
+            target="_blank"
+            href="http://paularmer.me"
+            icon={<AuthorIcon />}
+          >
+            Paul Armer
+          </MetaData>
+          <MetaData
+            {/* TODO */}
+            onClick={() => {}}
+            icon={<InfoIcon />}
+          >
+            About
+          </MetaData>
         </DaggerDiv>
       </SideBar>
       <BladeGenList>

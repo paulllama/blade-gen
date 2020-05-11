@@ -1,3 +1,4 @@
+import React from 'react'
 import styled from 'styled-components'
 import ActionDiv from '../shared/ActionDiv'
 import Colors from '../shared/colors'
@@ -5,8 +6,7 @@ import Colors from '../shared/colors'
 export const AppContainer = styled.div`
 	width: 80vw;
 	max-width: 50rem;
-  min-height: 100vh;
-  padding: 1.5rem 1rem 2rem 8rem;
+  padding: 3rem 1rem 2rem 10rem;
   color: ${Colors.TEXT}
 `
 
@@ -45,3 +45,30 @@ export const BladeGenList = styled.div`
 	display: flex;
 	flex-direction: column-reverse;
 `
+
+const StyledMetaData = styled.a`
+  color: ${Colors.TEXT};
+	text-decoration: none;
+	margin-left: 1rem;
+	margin-top: 0.5rem;
+	display: flex;
+	align-items: center;
+	opacity: 0.5;
+	cursor: pointer;
+	transition-property: opacity;
+	transition-duration: 200ms;
+
+	&:hover {
+		opacity: 1;
+	}
+`
+
+const StyledMetaDataText = styled.div`
+	margin-left: 0.25rem;
+`
+
+export const MetaData = ({ icon, children, ...rest }) => (
+	<StyledMetaData {...rest}>
+		{icon}<StyledMetaDataText>{children}</StyledMetaDataText>
+	</StyledMetaData>
+)
