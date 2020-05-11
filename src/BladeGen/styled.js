@@ -2,12 +2,15 @@ import React from 'react'
 import styled from 'styled-components'
 import ActionDiv from '../shared/ActionDiv'
 import Colors from '../shared/colors'
+import {
+	RiCloseLine as CloseIcon,
+} from 'react-icons/ri'
 
 export const AppContainer = styled.div`
 	width: 80vw;
 	max-width: 50rem;
   padding: 3rem 1rem 2rem 10rem;
-  color: ${Colors.TEXT}
+  color: ${Colors.TEXT};
 `
 
 export const SideBar = styled.div`
@@ -71,4 +74,74 @@ export const MetaData = ({ icon, children, ...rest }) => (
 	<StyledMetaData {...rest}>
 		{icon}<StyledMetaDataText>{children}</StyledMetaDataText>
 	</StyledMetaData>
+)
+
+export const AboutAnchor = styled.div`
+	position: fixed;
+	right: 0;
+	bottom: ${({ visible }) => visible ? '0' : '-50vh'};
+	opacity: ${({ visible }) => visible ? '1' : '0.5'};
+	transition-property: bottom opacity;
+	transition-duration: 500ms;
+`
+
+export const About = styled.div`
+	display: flex;
+	flex-direction: column;
+	padding: 1rem 1rem 1.5rem 1.5rem;
+	position: relative;
+
+	a {
+		color: ${Colors.ACTION};
+		font-weight: bold;
+		text-decoration: none;
+		border-bottom-width: 0;
+		border-bottom-style: solid;
+
+		&:hover {
+			border-bottom-width: 1px;
+		}
+	}
+`
+
+const AboutParagraphWrapper = styled.div`
+	margin-bottom: 0.75rem;
+	display: flex;
+	flex-direction: row;
+`
+
+const AboutParagraphIcon = styled.div`
+	margin-right: 0.4rem;
+`
+
+const AboutParagraphText = styled.p`
+	margin: 0 0 0.5rem;
+`
+
+export const AboutP = ({ icon, children }) => (
+	<AboutParagraphWrapper>
+		{icon && <AboutParagraphIcon>{icon}</AboutParagraphIcon>}
+		<AboutParagraphText>{children}</AboutParagraphText>
+	</AboutParagraphWrapper>
+)
+
+const CloseAnchor = styled.div`
+	position: absolute;
+	right: 1rem;
+	top: -3rem;
+	font-size: 2rem;
+	opacity: 0.5;
+	cursor: pointer;
+	transition-property: opacity;
+	transition-duration: 200ms;
+
+	&:hover {
+		opacity: 0.8;
+	}
+`
+
+export const AboutClose = ({ onClick }) => (
+	<CloseAnchor onClick={onClick}>
+		<CloseIcon />
+	</CloseAnchor>
 )
