@@ -1,5 +1,10 @@
+import React from 'react'
 import styled from 'styled-components'
 
+import {
+	BsLockFill as LockedIcon,
+	BsUnlock as UnlockedIcon,
+} from 'react-icons/bs'
 
 import Colors from '../../shared/colors'
 import ActionDiv from '../../shared/ActionDiv'
@@ -39,7 +44,7 @@ export const Attribute = styled.div`
 	margin-right: 2rem;
 `
 
-export const AttributeLabel = styled.div`
+export const AttributeLabel = styled(ActionDiv)`
 	text-transform: uppercase;
 	font-size: 0.85rem;
 	font-weight: 500;
@@ -50,3 +55,29 @@ export const AttributeValue = styled.div`
 	margin-top: 0.25rem;
 	font-size: 1.15rem;
 `
+
+const UnlockedWrapper = styled.div`
+	margin-left: 0.35rem;
+	display: inline-block;
+`
+const LockedWrapper = styled.div`
+	margin-left: 0.25rem;
+	display: inline-block;
+	margin-right: 0.1rem;
+`
+
+export const Unlocked = props => {
+	return (
+		<UnlockedWrapper {...props}>
+			<UnlockedIcon />
+		</UnlockedWrapper>
+	)
+}
+
+export const Locked = props => {
+	return (
+		<LockedWrapper {...props}>
+			<LockedIcon />
+		</LockedWrapper>
+	)
+}

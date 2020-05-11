@@ -2,11 +2,11 @@ import React from 'react'
 import _ from 'lodash'
 
 import {
-	RiLockLine as LockedIcon,
-	RiLockUnlockLine as UnlockedIcon,
 	RiDeleteBinLine as TrashIcon,
 } from 'react-icons/ri'
-import { BsShuffle as ShuffleIcon } from 'react-icons/bs'
+import {
+	BsShuffle as ShuffleIcon,
+} from 'react-icons/bs'
 
 import DaggerDiv from '../../shared/DaggerDiv'
 import Colors from '../../shared/colors'
@@ -20,19 +20,17 @@ import {
 	Attribute,
 	AttributeLabel,
 	AttributeValue,
+	Locked,
+	Unlocked,
 } from './styled'
 
 const RandomCreation = ({ type, lists, remove }) => {
-	const [isLocked, setIsLocked] = React.useState(false)
+	const [lockedAttrs, setLockedAttrs] = React.useState({})
 	const [creation, setCreation] = React.useState({})
 
 	React.useEffect(() => {
 		const newChoices = {}
 		let hasChanges = false
-
-		if (isLocked) {
-			return
-		}
 
 		_.map(lists, (list, name) => {
 			if (!creation[name]) {
@@ -47,16 +45,41 @@ const RandomCreation = ({ type, lists, remove }) => {
 				...newChoices,
 			})
 		}
-	}, [lists, creation, isLocked])
+	}, [lists, creation, lockedAttrs])
+
+	const toggleLock = attrName => {
+		const isLocked = lockedAttrs[attrName]
+
+		setLockedAttrs({
+			...lockedAttrs,
+			[attrName]: !isLocked,
+		})
+	}
+
+	const shuffle = () => {
+		const savedFields = _.pickBy(creation, (value, name) => lockedAttrs[name])
+		setCreation(savedFields)
+	}
 
 	const ICON_SIZE = '1.35rem'
 
-	const attributes = _.map(creation, (value, key) => (
-		<Attribute key={key}>
-			<AttributeLabel>{key}</AttributeLabel>
-			<AttributeValue>{value}</AttributeValue>
-		</Attribute>
-	))
+	// Iterate over `lists` to preserve order
+	const attributes = _.map(lists, (list, name) => {
+		const isLocked = lockedAttrs[name]
+		const value = creation[name]
+
+		return (
+			<Attribute key={name}>
+				<AttributeLabel onClick={() => toggleLock(name)}>
+					{name}
+					{/* The icon shows the current state. */}
+					{!isLocked && <Unlocked />}
+					{isLocked && <Locked />}
+				</AttributeLabel>
+				<AttributeValue>{value}</AttributeValue>
+			</Attribute>
+		)
+	})
 
 	return (
 		<CreationContainer>
@@ -74,13 +97,13 @@ const RandomCreation = ({ type, lists, remove }) => {
 					direction="horizontal"
 					sizeInRem={2.5}
 				>
-					<CreationAction onClick={() => setIsLocked(!isLocked)}>
+					{/* <CreationAction onClick={() => setIsLocked(!isLocked)}>
 						{isLocked ? <LockedIcon size={ICON_SIZE} /> : <UnlockedIcon size={ICON_SIZE} />}
-					</CreationAction>
-					<CreationAction disabled={isLocked} onClick={() => setCreation({})}>
+					</CreationAction> */}
+					<CreationAction onClick={() => shuffle()}>
 						<ShuffleIcon size={ICON_SIZE} />
 					</CreationAction>
-					<CreationAction disabled={isLocked} onClick={() => remove()}>
+					<CreationAction onClick={() => remove()}>
 						<TrashIcon size={ICON_SIZE} />
 					</CreationAction>
 				</DaggerDiv>
