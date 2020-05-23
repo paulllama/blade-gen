@@ -11,6 +11,11 @@ export const AppContainer = styled.div`
 	max-width: 50rem;
   padding: 3rem 1rem 2rem 10rem;
   color: ${Colors.TEXT};
+	font-family: 'Roboto', sans-serif;
+
+	h1, h2, h3 {
+		font-family: 'Righteous', serif;
+	}
 `
 
 export const SideBar = styled.div`

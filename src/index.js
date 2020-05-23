@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import BladeGen from './BladeGen';
 import * as serviceWorker from './serviceWorker';
 
